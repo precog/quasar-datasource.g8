@@ -8,7 +8,7 @@ cache:
     - $HOME/.sbt/launchers
 
 jdk:
-  - oraclejdk8
+  - openjdk8
 
 script:
   - set +e
