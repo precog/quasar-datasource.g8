@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package quasar.datasource.$datasource_name;format="lower;word"$
+package quasar.plugin.$datasource_name;format="lower;word"$
 
 object $datasource_name;format="Camel"$DatasourceModule {
 }
