@@ -20,16 +20,16 @@ lazy val core = project
   .settings(
     name := "$name;format="lower;hyphen"$",
 
-    datasourceName := "$datasource_name;format="lower;hyphen"$",
+    quasarPluginName := "$datasource_name;format="lower;hyphen"$",
 
-    datasourceQuasarVersion := IO.read(file("./quasar-version")).trim,
+    quasarPluginQuasarVersion := IO.read(file("./quasar-version")).trim,
 
-    datasourceModuleFqcn := "quasar.datasource.$datasource_name;format="lower;word"$.$datasource_name;format="Camel"$DatasourceModule\$",
+    quasarPluginDatasourceFqcn := Some("quasar.plugin.$datasource_name;format="lower;word"$.$datasource_name;format="Camel"$DatasourceModule\$"),
 
     /** Specify managed dependencies here instead of with `libraryDependencies`.
       * Do not include quasar libs, they will be included based on the value of
-      * `datasourceQuasarVersion`.
+      * `quasarPluginQuasarVersion`.
       */
-    datasourceDependencies ++= Seq(
+    quasarPluginDependencies ++= Seq(
     ))
-  .enablePlugins(AutomateHeaderPlugin, DatasourcePlugin)
+  .enablePlugins(AutomateHeaderPlugin, QuasarPlugin)
