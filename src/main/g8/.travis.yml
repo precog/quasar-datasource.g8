@@ -1,6 +1,6 @@
 language: scala
-scala: 2.12.7
-jdk: oraclejdk8
+scala: 2.12.10
+jdk: openjdk8
 
 stages:
   - name: test
@@ -26,6 +26,11 @@ env:
     # DISCORD_WEBHOOK_TOKENS
     - secure: ...
 
+install:
+  - mkdir scripts
+  - \$SBT transferCommonResources
+  - scripts/commonSetup
+
 jobs:
   include:
     - stage: test
@@ -44,6 +49,7 @@ jobs:
         depth: false
 
 after_success:
+  - scripts/checkAndAutoMerge
   - scripts/discordTravisPost success https://discordapp.com/api/webhooks/\$DISCORD_WEBHOOK_TOKENS
 
 after_failure:
